@@ -2,15 +2,17 @@ const LandingPage = () => {
   return (
     <section className="h-screen max-w-screen mx-auto">
       <div
-        className="bg-cover bg-center h-[70vh] -mt-9"
+        className="bg-cover bg-center h-[70vh] md:-mt-15 -mt-9"
         style={{ backgroundImage: "url('/images/home_background.jpg')" }}
       >
         <span className="absolute h-[70vh] w-full bg-black bg-opacity-50"></span>
       </div>
       <div className="absolute top-[30%] left-[50%] -translate-x-[50%] -translate-y-[50%] ">
         <div className="text-[#FCFCEA] text-center w-full">
-          <div className="text-5xl">Welcome to</div>
-          <h1 className="text-8xl lette tracking-wider">My Bookshop</h1>
+          <div className="md:text-5xl text-3xl">Welcome to</div>
+          <h1 className="md:text-8xl text-5xl lette tracking-wider">
+            My Bookshop
+          </h1>
         </div>
         <div className="mt-5 relative">
           <svg
