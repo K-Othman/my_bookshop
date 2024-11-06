@@ -1,6 +1,6 @@
 const LandingPage = () => {
   return (
-    <section className="h-screen max-w-screen mx-auto">
+    <section className="h-[70vh] mx-auto">
       <div
         className="bg-cover bg-center h-[70vh] md:-mt-15 -mt-9"
         style={{ backgroundImage: "url('/images/home_background.jpg')" }}

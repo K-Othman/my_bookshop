@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
       <div className="px-3 md:px-0 container md:mx-auto text-[#FCFCEA] flex justify-between items-center">
         <Link
           href="/"
-          className="text-[#FCFCEA] hover:text-gray-300 transition-all font-bold"
+          className="text-[#FCFCEA] hover:text-gray-300 transition-all font-bold transform hover:scale-110"
         >
           My Bookshop
           {/* <Image
