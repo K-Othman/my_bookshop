@@ -1,11 +1,11 @@
-import Books from "./components/Books";
+import Bookshop from "./components/Bookshop";
 import LandingPage from "./components/LandingPage";
 
 export default function Home() {
   return (
     <main>
       <LandingPage />
-      <Books />
+      <Bookshop />
     </main>
   );
 }
