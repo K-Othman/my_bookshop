@@ -1,9 +1,16 @@
 "use client";
+import Link from "next/link";
+// import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+
 import { useEffect, useState } from "react";
 
 interface Book {
   isbn13: string;
   title: string;
+  image: string;
+  url: string;
+  price: string;
 }
 
 const Books = () => {
@@ -30,10 +37,16 @@ const Books = () => {
   if (!books.length) return <p>No Books</p>;
 
   return (
-    <div>
+    <div className="grid grid-cols-2 md:grid-cols-3 text-center">
       {books.map((book) => (
-        <div key={book.isbn13}>
-          <h2>{book.title}</h2>
+        <div key={book.isbn13} className="">
+          <Link href={book.url} className="">
+            <img src={book.image} alt="The Book Cover" />
+            <div className="-mt-5">
+              <h2 className="font-bold">{book.title}</h2>
+              <p>{book.price}</p>
+            </div>
+          </Link>
         </div>
       ))}
     </div>
