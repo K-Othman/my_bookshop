@@ -33,15 +33,16 @@ const Books = () => {
       });
   }, []);
 
-  //   const filterByPrice = (books) =>{
-
-  //   }
+  const filterByPrice = (books: Book[]): Book[] => {
+    books.sort((a, b) => a.price - b.price);
+  };
 
   if (isLoading) return <p>Loading ...</p>;
   if (!books.length) return <p>No Books</p>;
 
   return (
     <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
+      <button onClick={() => filterByPrice}>Higher</button>
       {books.map((book) => (
         <div key={book.isbn13} className="">
           <Link href={book.url} className="text-center">
