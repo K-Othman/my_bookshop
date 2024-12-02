@@ -1,6 +1,39 @@
+"use client";
+
 import Books from "./Books";
+import { useEffect, useState } from "react";
+
+interface Book {
+  isbn13: string;
+  title: string;
+  image: string;
+  url: string;
+  price: string;
+}
 
 const Bookshop = () => {
+  const [books, setBooks] = useState<Book[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://api.itbook.store/1.0/search/python")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("API response:", data);
+        if (data && data.books) {
+          setBooks(data.books);
+        }
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      });
+  }, []);
+
+  if (isLoading) return <p>Loading ...</p>;
+  if (!books.length) return <p>No Books</p>;
+
   return (
     <section className="container md:mx-auto my-7 mx-3">
       <h2 className="text-3xl md:text-5xl font-bold border-b-2 border-pink-500 w-[70%] md:pb-5 pb-3">
@@ -29,7 +62,7 @@ const Bookshop = () => {
           </select>
         </div>
       </div>
-      <Books />
+      <Books books={books} />
     </section>
   );
 };
