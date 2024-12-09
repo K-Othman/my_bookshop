@@ -31,15 +31,19 @@ const Bookshop = () => {
       });
   }, []);
 
-  const higherToLowerPrice = (books: Book[]): Book[] => {
-    return books.sort(
-      (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
+  const higherToLowerPrice = (books: Book[]): void => {
+    return setBooks(
+      [...books].sort(
+        (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
+      )
     );
   };
 
-  const LowerToHigher = (books: Book[]): Book[] => {
-    return books.sort(
-      (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
+  const LowerToHigher = (books: Book[]): void => {
+    return setBooks(
+      [...books].sort(
+        (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
+      )
     );
   };
 
@@ -58,31 +62,22 @@ const Bookshop = () => {
       </p>
       <div className="mt-6 flex justify-end gap-4">
         <div className="flex flex-col">
-          {/* trying the filteration start */}
+          <button
+            onClick={() => {
+              LowerToHigher(books);
+              console.log(books);
+            }}
+          >
+            LOWER
+          </button>
           <button
             onClick={() => {
               higherToLowerPrice(books);
               console.log(books);
             }}
           >
-            higher
+            HIGHER
           </button>
-          <button onClick={() => LowerToHigher(books)}>lower</button>
-          {/* trying the filteration end */}
-          {/* <select className="px-2 py-1 w-44" name="cars" id="cars">
-            <option value="all bookshop">All Bookshop</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
-        </div>
-        <div>
-          <select className="px-2 py-1 w-44" name="cars" id="cars">
-            <option value="new to old">Date: New to Old</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select> */}
         </div>
       </div>
       <Books books={books} />

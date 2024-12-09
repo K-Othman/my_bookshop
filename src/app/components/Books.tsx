@@ -16,6 +16,18 @@ interface BooksProps {
 }
 
 const Books: React.FC<BooksProps> = ({ books }) => {
+  // const higherToLowerPrice = (books: Book[]): Book[] => {
+  //   return books.sort(
+  //     (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
+  //   );
+  // };
+
+  // const LowerToHigher = (books: Book[]): Book[] => {
+  //   return books.sort(
+  //     (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
+  //   );
+  // };
+
   return (
     <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
       {books.map((book) => (
