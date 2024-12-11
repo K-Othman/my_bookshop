@@ -61,6 +61,7 @@ const Bookshop = () => {
         classics.
       </p>
       <div className="mt-6 flex justify-end gap-4">
+        price :
         <div className="flex flex-col">
           <button
             onClick={() => {
@@ -68,7 +69,7 @@ const Bookshop = () => {
               console.log(books);
             }}
           >
-            LOWER
+            lower
           </button>
           <button
             onClick={() => {
@@ -76,7 +77,7 @@ const Bookshop = () => {
               console.log(books);
             }}
           >
-            HIGHER
+            higher
           </button>
         </div>
       </div>
