@@ -1,4 +1,5 @@
 import Bookshop from "./components/Bookshop";
+import Footer from "./components/Footer";
 import LandingPage from "./components/LandingPage";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <LandingPage />
       <Bookshop />
+      <Footer />
     </main>
   );
 }
