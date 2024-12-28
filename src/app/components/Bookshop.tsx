@@ -4,7 +4,7 @@ import Books from "./Books";
 import { useEffect, useState } from "react";
 
 interface Book {
-  isbn13: string;
+  id: string;
   title: string;
   image: string;
   url: string;
@@ -16,12 +16,15 @@ const Bookshop = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://api.itbook.store/1.0/search/python")
+    // fetch("https://api.itbook.store/1.0/search/python")
+    fetch("http://localhost:8080/api/books")
       .then((res) => res.json())
       .then((data) => {
         console.log("API response:", data);
-        if (data && data.books) {
-          setBooks(data.books);
+        if (data) {
+          console.log("!!");
+          setBooks(data);
+          console.log("!!");
         }
         setIsLoading(false);
       })
@@ -49,6 +52,7 @@ const Bookshop = () => {
 
   if (isLoading) return <p>Loading ...</p>;
   if (!books.length) return <p>No Books</p>;
+  console.log(books, " !!!!!!");
 
   return (
     <section className="container md:mx-auto my-7 mx-3">

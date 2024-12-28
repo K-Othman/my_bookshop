@@ -1,10 +1,10 @@
-import Link from "next/link";
+// import Link from "next/link";
 import React from "react";
 
 /* eslint-disable @next/next/no-img-element */
 
 interface Book {
-  isbn13: string;
+  id: string;
   title: string;
   image: string;
   url: string;
@@ -16,29 +16,22 @@ interface BooksProps {
 }
 
 const Books: React.FC<BooksProps> = ({ books }) => {
-  // const higherToLowerPrice = (books: Book[]): Book[] => {
-  //   return books.sort(
-  //     (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
-  //   );
-  // };
-
-  // const LowerToHigher = (books: Book[]): Book[] => {
-  //   return books.sort(
-  //     (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
-  //   );
-  // };
+  console.log(books, "<<<");
 
   return (
-    <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
+    // <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
+    <div>
       {books.map((book) => (
-        <div key={book.isbn13} className="">
-          <Link href={book.url} className="text-center">
+        <div key={book.id} className="">
+          {/* <Link href={book.url} className="text-center"> */}
+          <div className="text-center">
             <img className="mx-auto" src={book.image} alt="The Book Cover" />
-            <div className="-mt-5">
+            <div className="">
               <h2 className="font-bold">{book.title}</h2>
               <p>{book.price}</p>
             </div>
-          </Link>
+          </div>
+          {/* </Link> */}
         </div>
       ))}
     </div>
