@@ -3,20 +3,20 @@ import Link from "next/link";
 
 const LandingPage = () => {
   return (
-    <section className="container mx-auto my-5 py-5 bg-third ">
+    <section className="container mx-auto my-5 py-5 bg-third md:text-left text-center">
       <div className="flex flex-col md:flex-row justify-between gap-5">
-        <div className="w-[500px]">
+        <div className="max-w-[500px]">
           <h5 className="text-secondary font-bold my-5">
             #1 on readers&apos; choice
           </h5>
-          <p className="text-6xl font-bold max-w-[100%] my-5">
+          <p className="md:text-6xl text-3xl font-bold my-5">
             Explore Worlds Within Pages
           </p>
-          <p>
+          <p className="text-sm">
             K_Bookshop: Where every book is a new adventure waiting for you.
           </p>
           <input
-            className="w-1/2 block py-4 pl-1 mt-7 mb-7 outline-none border"
+            className="w-1/2 block py-4 pl-1 mt-7 mb-7 outline-none border mx-auto md:ml-0"
             type="search"
             placeholder="Search Books"
           />
