@@ -1,6 +1,33 @@
+import Image from "next/image";
+import Link from "next/link";
+
 const LandingPage = () => {
   return (
-    <section className=" mx-auto">
+    <section className="container mx-auto my-5 py-5 bg-third">
+      <div className="flex justify-between">
+        <div className="">
+          <h5>#1 on readers&apos; choice</h5>
+          <p>Explore Worlds Within Pages</p>
+          <p>
+            K_Bookshop: Where every book is a new adventure waiting for you.
+          </p>
+          <input
+            className="w-full rounded-3xl py-4 px-2 pl-12 outline-none"
+            type="search"
+            placeholder="Search Books"
+          />
+          <Link href="/">Sign uo today</Link>
+        </div>
+        <div>
+          <Image
+            src={"/images/landingPage.jpeg"}
+            alt=""
+            width={500}
+            height={500}
+          />
+          {/* <img src={require('/images/la')} alt="" /> */}
+        </div>
+      </div>
       {/* <div
         className="bg-cover bg-center h-[70vh] md:-mt-15 -mt-9"
         style={{ backgroundImage: "url('/images/home_background.jpg')" }}

@@ -4,11 +4,11 @@ import Link from "next/link";
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="container mx-auto">
+    <nav className="container mx-auto bg-third">
       <div className="flex justify-between items-center">
-        <div>
-          <h1>K_Bookshop</h1>
-        </div>
+        <Link href={"/"}>
+          <h1 className="font-bold">K_Bookshop</h1>
+        </Link>
         <div className="flex gap-3">
           <Link href={"/"} className="nav">
             Home
