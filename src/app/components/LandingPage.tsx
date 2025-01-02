@@ -3,20 +3,29 @@ import Link from "next/link";
 
 const LandingPage = () => {
   return (
-    <section className="container mx-auto my-5 py-5 bg-third">
-      <div className="flex justify-between">
-        <div className="">
-          <h5>#1 on readers&apos; choice</h5>
-          <p>Explore Worlds Within Pages</p>
+    <section className="container mx-auto my-5 py-5 bg-third ">
+      <div className="flex flex-col md:flex-row justify-between gap-5">
+        <div className="w-[500px]">
+          <h5 className="text-secondary font-bold my-5">
+            #1 on readers&apos; choice
+          </h5>
+          <p className="text-6xl font-bold max-w-[100%] my-5">
+            Explore Worlds Within Pages
+          </p>
           <p>
             K_Bookshop: Where every book is a new adventure waiting for you.
           </p>
           <input
-            className="w-full rounded-3xl py-4 px-2 pl-12 outline-none"
+            className="w-1/2 block py-4 pl-1 mt-7 mb-7 outline-none border"
             type="search"
             placeholder="Search Books"
           />
-          <Link href="/">Sign uo today</Link>
+          <Link
+            href="/"
+            className="bg-secondary  text-third py-4 px-4 rounded-3xl font-bold"
+          >
+            Sign up today
+          </Link>
         </div>
         <div>
           <Image
@@ -24,6 +33,7 @@ const LandingPage = () => {
             alt=""
             width={500}
             height={500}
+            priority
           />
           {/* <img src={require('/images/la')} alt="" /> */}
         </div>
