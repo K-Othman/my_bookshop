@@ -1,7 +1,7 @@
 const LandingPage = () => {
   return (
-    <section className="h-[70vh] mx-auto">
-      <div
+    <section className=" mx-auto">
+      {/* <div
         className="bg-cover bg-center h-[70vh] md:-mt-15 -mt-9"
         style={{ backgroundImage: "url('/images/home_background.jpg')" }}
       >
@@ -36,7 +36,7 @@ const LandingPage = () => {
             placeholder="Search Books"
           />
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
