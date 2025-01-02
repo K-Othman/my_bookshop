@@ -5,7 +5,7 @@ import Link from "next/link";
 const Navbar: React.FC = () => {
   return (
     <nav className="container mx-auto bg-third">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center">
         <Link href={"/"}>
           <h1 className="font-bold">K_Bookshop</h1>
         </Link>
