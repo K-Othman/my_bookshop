@@ -6,10 +6,10 @@ const LandingPage = () => {
     <section className="container mx-auto my-5 py-5 bg-third md:text-left text-center">
       <div className="flex flex-col md:flex-row justify-between gap-5">
         <div className="max-w-[500px]">
-          <h5 className="text-secondary font-bold my-5">
+          <h5 className="text-secondary font-bold mt-5">
             #1 on readers&apos; choice
           </h5>
-          <p className="md:text-6xl text-3xl font-bold my-5">
+          <p className="md:text-6xl text-3xl font-bold mb-5">
             Explore Worlds Within Pages
           </p>
           <p className="text-sm">
