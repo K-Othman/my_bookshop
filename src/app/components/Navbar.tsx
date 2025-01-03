@@ -11,16 +11,16 @@ const Navbar: React.FC = () => {
           <Link href={"/"} className="nav">
             Home
           </Link>
-          <Link href={"/"} className="nav">
+          <Link href={"/books"} className="nav">
             Shop Books
           </Link>
-          <Link href={"/"} className="nav">
+          <Link href={"/contactUs"} className="nav">
             Contact Us
           </Link>
-          <Link href={"/"} className="nav">
+          <Link href={"/signUp"} className="nav">
             Sign Up
           </Link>
-          <Link href={"/"} className="py-4 text-secondary">
+          <Link href={"/cart"} className="py-4 text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -40,28 +40,6 @@ const Navbar: React.FC = () => {
           </Link>
         </div>
       </div>
-      {/* <div className="px-3 md:px-0 container md:mx-auto text-[#FCFCEA] flex justify-between items-center">
-        <Link
-          href="/"
-          className="text-[#FCFCEA] hover:text-gray-300 transition-all font-bold transform hover:scale-110"
-        >
-          My Bookshop
-        </Link>
-        <div className="space-x-4 ">
-          <Link
-            className="text-[#FCFCEA] hover:text-gray-300 transition-all"
-            href="/books"
-          >
-            Books
-          </Link>
-          <Link
-            className="text-[#FCFCEA] hover:text-gray-300 transition-all"
-            href="/cart"
-          >
-            Cart
-          </Link>
-        </div>
-      </div> */}
     </nav>
   );
 };
