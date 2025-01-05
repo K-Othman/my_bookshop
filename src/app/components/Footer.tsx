@@ -17,10 +17,10 @@ const Footer = () => {
           Sign up
         </Link>
       </div>
-      <div className="flex justify-between container mx-auto my-16">
-        <div>
+      <div className="flex justify-between md:flex-row flex-col ml-6 container md:mx-auto my-16">
+        <div className="mb-6">
           <h5 className="font-bold text-xl">K_Bookshop</h5>
-          <p className="text-xs text-third">© 2024 BookNest</p>
+          <p className="text-xs text-[#41404055]">© 2025 K_Bookshop</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 justify-btween gap-10">
           <div>
