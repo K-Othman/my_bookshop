@@ -17,7 +17,34 @@ const Footer = () => {
           Sign up
         </Link>
       </div>
-      <div></div>
+      <div className="flex justify-between container mx-auto my-16">
+        <div>
+          <h5 className="font-bold text-xl">K_Bookshop</h5>
+          <p className="text-xs text-third">© 2024 BookNest</p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 justify-btween gap-10">
+          <div>
+            <p className="font-bold">Product</p>
+            <p className="my-3">Overview</p>
+            <p>Customers</p>
+          </div>
+          <div>
+            <p className="font-bold">Company</p>
+            <p className="my-3">About</p>
+            <p>Jobs</p>
+          </div>
+          <div>
+            <p className="font-bold">Support</p>
+            <p className="my-3">FAQs</p>
+            <p>Contact us</p>
+          </div>
+          <div>
+            <p className="font-bold">Legal</p>
+            <p className="my-3">Terms</p>
+            <p>Privacy</p>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
