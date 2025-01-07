@@ -1,4 +1,9 @@
 // import Link from "next/link";
+import {
+  BookmarkIcon,
+  BookmarkSlashIcon,
+  BookmarkSquareIcon,
+} from "@heroicons/react/16/solid";
 import React from "react";
 
 /* eslint-disable @next/next/no-img-element */
@@ -30,7 +35,12 @@ const Books: React.FC<BooksProps> = ({ books }) => {
             />
             <div className="">
               <h2 className="font-bold">{book.title}</h2>
-              <p>{book.price}</p>
+              <div className="flex justify-center items-center gap-5">
+                <p>{book.price}</p>
+                <div className="w-5 h-5">
+                  <BookmarkIcon />
+                </div>
+              </div>
             </div>
           </div>
           {/* </Link> */}

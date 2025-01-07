@@ -53,7 +53,7 @@ const Bookshop = () => {
   return (
     <section className="container md:mx-auto my-7 mx-3">
       <h2 className="text-3xl md:text-5xl font-bold border-b-4 border-secondary w-[70%] md:pb-5 pb-3 mb-3">
-        Bookshop
+        K_Bookshop
       </h2>
       <p>
         Browse through our specially curated online bookshop. Featuring titles
