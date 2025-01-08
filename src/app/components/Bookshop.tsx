@@ -14,6 +14,7 @@ interface Book {
 const Bookshop = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filter, setFilter] = useState<string>("all");
 
   useEffect(() => {
     fetch("http://localhost:8080/api/books")
@@ -31,21 +32,56 @@ const Bookshop = () => {
       });
   }, []);
 
-  const higherToLowerPrice = (books: Book[]): void => {
-    return setBooks(
-      [...books].sort(
+  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFilter(event.target.value);
+  };
+  // const filterBooks = books.filter(() => {
+  //   if (filter === "all") return;
+  //   if (filter === "lowToHigh") {
+  //     return setBooks(
+  //       [...books].sort(
+  //         (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
+  //       )
+  //     );
+  //   }
+  //   if (filter === "hightToLower") {
+  //     return setBooks(
+  //       [...books].sort(
+  //         (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
+  //       )
+  //     );
+  //   }
+  // });
+
+  const filterBooks = (): Book[] => {
+    if (filter === "low-to-high") {
+      return [...books].sort(
+        (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
+      );
+    }
+    if (filter === "high-to-low") {
+      return [...books].sort(
         (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
-      )
-    );
+      );
+    }
+    return books;
   };
 
-  const LowerToHigher = (books: Book[]): void => {
-    return setBooks(
-      [...books].sort(
-        (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
-      )
-    );
-  };
+  // const higherToLowerPrice = (books: Book[]): void => {
+  //   return setBooks(
+  //     [...books].sort(
+  //       (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
+  //     )
+  //   );
+  // };
+
+  // const LowerToHigher = (books: Book[]): void => {
+  //   return setBooks(
+  //     [...books].sort(
+  //       (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
+  //     )
+  //   );
+  // };
 
   if (isLoading) return <p>Loading ...</p>;
   if (!books.length) return <p>No Books</p>;
@@ -60,28 +96,23 @@ const Bookshop = () => {
         from British Library publishing, new titles, chart toppers and beautiful
         classics.
       </p>
-      <div className="mt-6 flex justify-end gap-4">
-        price :
-        <div className="flex flex-col">
-          <button
-            onClick={() => {
-              LowerToHigher(books);
-              console.log(books);
-            }}
-          >
-            lower
-          </button>
-          <button
-            onClick={() => {
-              higherToLowerPrice(books);
-              console.log(books);
-            }}
-          >
-            higher
-          </button>
-        </div>
+      <div className="mt-6 flex justify-end gap-4 my-5 outline-none">
+        <label htmlFor="filter" className="font-medium">
+          Filter By:
+        </label>
+        <select
+          id="filter"
+          className="px-2 py-1 border rounded-md"
+          value={filter}
+          onChange={handleFilterChange}
+        >
+          <option value="all">All</option>
+          <option value="low-to-high">Price: Low to High</option>
+          <option value="high-to-low">Price: High to Low</option>
+        </select>
       </div>
-      <Books books={books} />
+
+      <Books books={filterBooks()} />
     </section>
   );
 };

@@ -21,6 +21,8 @@ interface BooksProps {
 }
 
 const Books: React.FC<BooksProps> = ({ books }) => {
+  console.log(books, "<<<");
+
   return (
     // <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
     <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
