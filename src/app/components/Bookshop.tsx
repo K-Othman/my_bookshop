@@ -35,23 +35,6 @@ const Bookshop = () => {
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value);
   };
-  // const filterBooks = books.filter(() => {
-  //   if (filter === "all") return;
-  //   if (filter === "lowToHigh") {
-  //     return setBooks(
-  //       [...books].sort(
-  //         (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
-  //       )
-  //     );
-  //   }
-  //   if (filter === "hightToLower") {
-  //     return setBooks(
-  //       [...books].sort(
-  //         (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
-  //       )
-  //     );
-  //   }
-  // });
 
   const filterBooks = (): Book[] => {
     if (filter === "low-to-high") {
@@ -66,22 +49,6 @@ const Bookshop = () => {
     }
     return books;
   };
-
-  // const higherToLowerPrice = (books: Book[]): void => {
-  //   return setBooks(
-  //     [...books].sort(
-  //       (a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1))
-  //     )
-  //   );
-  // };
-
-  // const LowerToHigher = (books: Book[]): void => {
-  //   return setBooks(
-  //     [...books].sort(
-  //       (a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1))
-  //     )
-  //   );
-  // };
 
   if (isLoading) return <p>Loading ...</p>;
   if (!books.length) return <p>No Books</p>;
