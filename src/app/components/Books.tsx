@@ -29,10 +29,7 @@ const Books: React.FC<BooksProps> = ({ books }) => {
     <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
       {books.map((book) => (
         <div key={book.id} className="">
-          <Link
-            href={`http://localhost:8080/api/books/${book.id}`}
-            className="text-center"
-          >
+          <Link href={`/books/${book.id}`} className="text-center">
             <div className="text-center">
               <img
                 className="mx-auto h-48 object-contain"
