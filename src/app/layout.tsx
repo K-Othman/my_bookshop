@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./components/Navbar.tsx";
 import Footer from "./components/Footer.tsx";
+import { BooksContextProvider } from "./context/booksContext.tsx";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        {children}
+        <BooksContextProvider>{children}</BooksContextProvider>
         <Footer />
       </body>
     </html>

@@ -1,36 +1,39 @@
 "use client";
 
+import { useContext, useEffect, useState } from "react";
+import { BooksContext } from "../context/booksContext";
 import Books from "./Books";
-import { useEffect, useState } from "react";
+import { Book } from "../context/booksContext";
 
-interface Book {
-  id: string;
-  title: string;
-  image: string;
-  url: string;
-  price: string;
-}
+// export interface Book {
+//   id: string;
+//   title: string;
+//   image: string;
+//   url: string;
+//   price: string;
+// }
 
 const Bookshop = () => {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { books, isLoading } = useContext(BooksContext);
+  // const [books, setBooks] = useState<Book[]>([]);
+  // const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState<string>("all");
 
-  useEffect(() => {
-    fetch("http://localhost:8080/api/books")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("API response:", data);
-        if (data) {
-          setBooks(data);
-        }
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setIsLoading(false);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:8080/api/books")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("API response:", data);
+  //       if (data) {
+  //         setBooks(data);
+  //       }
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value);
