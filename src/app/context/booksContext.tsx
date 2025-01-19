@@ -30,7 +30,6 @@ export const BooksContext = createContext<IBooksContext>({} as IBooksContext);
 export const BooksContextProvider: FC<Props> = ({ children }) => {
   const [books, setBooks] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  //   const [filter, setFilter] = useState<string>("all");
   const baseUrl = `http://localhost:8080/api`;
 
   useEffect(() => {
