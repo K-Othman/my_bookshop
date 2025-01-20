@@ -2,7 +2,7 @@ import {
   BookmarkIcon,
   BookmarkSlashIcon,
   BookmarkSquareIcon,
-} from "@heroicons/react/16/solid";
+} from "@heroicons/react/24/outline";
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -23,7 +23,7 @@ interface BooksProps {
 const Books: React.FC<BooksProps> = ({ books }) => {
   return (
     // <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
-    <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
+    <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center items-center align-middle">
       {books.map((book) => (
         <div key={book.id} className="">
           <Link href={`/books/${book.id}`} className="text-center">

@@ -24,7 +24,7 @@ const bookPage = () => {
         <div>
           <h1 className="text-4xl font-bold mb-4">{book.title}</h1>
           <p className="text-xl text-green-600 font-bold mt-4">
-            Price: {book.price}
+            Price: £{book.price}
           </p>
         </div>
       </div>
