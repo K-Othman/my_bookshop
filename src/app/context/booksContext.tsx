@@ -11,6 +11,7 @@ export interface Book {
 export interface IBooksContext {
   books: Book[];
   isLoading: boolean;
+  addToFavorites: (book: Book) => void;
 }
 
 type Props = {
@@ -21,7 +22,7 @@ export const BooksContext = createContext<IBooksContext>({} as IBooksContext);
 
 export const BooksContextProvider: FC<Props> = ({ children }) => {
   const [books, setBooks] = useState<Book[]>([]);
-  const [favBooks, setFavBooks] = useState<Book[]>();
+  const [favBooks, setFavBooks] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const baseUrl = `http://localhost:8080/api`;
 
@@ -41,13 +42,20 @@ export const BooksContextProvider: FC<Props> = ({ children }) => {
       });
   }, []);
 
-  const favouritBooks = () => {};
+  const addToFavorites = (book: Book) => {
+    setFavBooks((prevBooks) => {
+      if (prevBooks.some((favBook) => favBook.id === book.id)) {
+        return prevBooks;
+      }
+      return [...prevBooks, book];
+    });
+  };
 
   if (isLoading) return <p>Loading ...</p>;
   if (!books.length) return <p>No Books</p>;
 
   return (
-    <BooksContext.Provider value={{ books, isLoading }}>
+    <BooksContext.Provider value={{ books, isLoading, addToFavorites }}>
       {children}
     </BooksContext.Provider>
   );
