@@ -12,6 +12,7 @@ export interface IBooksContext {
   books: Book[];
   isLoading: boolean;
   addToFavorites: (book: Book) => void;
+  favBooks: Book[];
 }
 
 type Props = {
@@ -55,7 +56,9 @@ export const BooksContextProvider: FC<Props> = ({ children }) => {
   if (!books.length) return <p>No Books</p>;
 
   return (
-    <BooksContext.Provider value={{ books, isLoading, addToFavorites }}>
+    <BooksContext.Provider
+      value={{ books, isLoading, addToFavorites, favBooks }}
+    >
       {children}
     </BooksContext.Provider>
   );

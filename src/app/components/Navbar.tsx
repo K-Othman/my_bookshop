@@ -1,3 +1,4 @@
+import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
 const Navbar: React.FC = () => {
@@ -37,6 +38,9 @@ const Navbar: React.FC = () => {
               <path d="M3 6h18" />
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
+          </Link>
+          <Link href={"/favourits"} className="w-6 text-secondary my-auto">
+            <BookmarkIcon />
           </Link>
         </div>
       </div>

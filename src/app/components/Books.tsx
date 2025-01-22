@@ -6,6 +6,9 @@ import {
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useContext } from "react";
+import { BooksContext } from "../context/booksContext";
+import { log } from "util";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -21,6 +24,8 @@ interface BooksProps {
 }
 
 const Books: React.FC<BooksProps> = ({ books }) => {
+  const { addToFavorites } = useContext(BooksContext);
+
   return (
     // <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
     <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center items-center align-middle">
@@ -37,13 +42,24 @@ const Books: React.FC<BooksProps> = ({ books }) => {
                 <h2 className="font-bold w-1/2 mx-auto">{book.title}</h2>
                 <div className="flex justify-center items-center gap-5">
                   <p>{book.price}</p>
-                  <div className="w-5 h-5">
-                    <BookmarkIcon />
-                  </div>
                 </div>
               </div>
             </div>
           </Link>
+          <div className="flex justify-center items-center gap-1">
+            <div>
+              <p>Add To Cart</p>
+            </div>
+            <button
+              className="w-7 p-1 bg-slate-500 border m-1 rounded-full"
+              onClick={() => {
+                addToFavorites(book);
+                console.log(book);
+              }}
+            >
+              <BookmarkIcon />
+            </button>
+          </div>
         </div>
       ))}
     </div>
