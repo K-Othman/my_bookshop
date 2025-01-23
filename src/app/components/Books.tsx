@@ -48,10 +48,12 @@ const Books: React.FC<BooksProps> = ({ books }) => {
           </Link>
           <div className="flex justify-center items-center gap-1">
             <div>
-              <p>Add To Cart</p>
+              <button className="bg-secondary text-white p-1 rounded-lg px-2">
+                Add To Cart
+              </button>
             </div>
             <button
-              className="w-7 p-1 bg-slate-500 border m-1 rounded-full"
+              className="w-7 p-1 bg-secondary text-white border m-1 rounded-full"
               onClick={() => {
                 addToFavorites(book);
                 console.log(book);
