@@ -3,12 +3,9 @@ import {
   BookmarkSlashIcon,
   BookmarkSquareIcon,
 } from "@heroicons/react/24/outline";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { useContext } from "react";
 import { BooksContext } from "../context/booksContext";
-import { log } from "util";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -17,6 +14,8 @@ interface Book {
   title: string;
   image: string;
   price: string;
+  published_date: number;
+  author: string;
 }
 
 interface BooksProps {
@@ -27,39 +26,42 @@ const Books: React.FC<BooksProps> = ({ books }) => {
   const { addToFavorites } = useContext(BooksContext);
 
   return (
-    // <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center">
-    <div className="grid grid-cols-2 gap-8 md:grid-cols-3 text-center items-center align-middle">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 text-center">
       {books.map((book) => (
-        <div key={book.id} className="">
-          <Link href={`/books/${book.id}`} className="text-center">
+        <div
+          key={book.id}
+          className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow duration-300"
+        >
+          <Link href={`/books/${book.id}`} className="block">
             <div className="text-center">
               <img
-                className="mx-auto h-48 object-contain"
+                className="mx-auto h-48 object-contain mb-4"
                 src={book.image}
                 alt="The Book Cover"
               />
-              <div className="">
-                <h2 className="font-bold w-1/2 mx-auto">{book.title}</h2>
-                <div className="flex justify-center items-center gap-5">
-                  <p>{book.price}</p>
-                </div>
-              </div>
+              <h2 className="font-bold text-lg text-gray-800 mb-2">
+                {book.title}
+              </h2>
+              <p className="text-secondary font-semibold">£{book.price}</p>
             </div>
           </Link>
-          <div className="flex justify-center items-center gap-1">
-            <div>
-              <button className="bg-secondary text-white p-1 rounded-lg px-2">
-                Add To Cart
-              </button>
-            </div>
+          <div className="flex justify-center items-center gap-3 mt-4">
             <button
-              className="w-7 p-1 bg-secondary text-white border m-1 rounded-full"
+              className="bg-secondary text-white px-4 py-2 rounded-lg shadow hover:bg-secondary-dark transition-colors"
               onClick={() => {
-                addToFavorites(book);
-                console.log(book);
+                console.log("Add to Cart:", book);
               }}
             >
-              <BookmarkIcon />
+              Add To Cart
+            </button>
+            <button
+              className="bg-gray-100 p-2 rounded-full shadow hover:bg-gray-200 transition-colors"
+              onClick={() => {
+                addToFavorites(book);
+                console.log("Added to Favorites:", book);
+              }}
+            >
+              <BookmarkIcon className="h-5 w-5 text-secondary" />
             </button>
           </div>
         </div>

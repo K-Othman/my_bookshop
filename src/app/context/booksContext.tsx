@@ -6,6 +6,8 @@ export interface Book {
   title: string;
   image: string;
   price: string;
+  published_date: Date;
+  author: string;
 }
 
 export interface IBooksContext {

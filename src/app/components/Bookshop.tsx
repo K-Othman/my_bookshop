@@ -15,25 +15,8 @@ import { Book } from "../context/booksContext";
 
 const Bookshop = () => {
   const { books, isLoading } = useContext(BooksContext);
-  // const [books, setBooks] = useState<Book[]>([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  const [filter, setFilter] = useState<string>("all");
 
-  // useEffect(() => {
-  //   fetch("http://localhost:8080/api/books")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log("API response:", data);
-  //       if (data) {
-  //         setBooks(data);
-  //       }
-  //       setIsLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //       setIsLoading(false);
-  //     });
-  // }, []);
+  const [filter, setFilter] = useState<string>("all");
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value);

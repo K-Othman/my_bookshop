@@ -3,7 +3,7 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <section>
-      <div className="bg-secondary text-third text-center py-10 pb-20">
+      <div className="bg-secondary text-third text-center max-h-[356px] py-10 pb-20">
         <h4 className="text-3xl font-bold mt-5 mb-2">
           Join Our Bookshop Community
         </h4>
@@ -17,7 +17,7 @@ const Footer = () => {
           Sign up
         </Link>
       </div>
-      <div className="flex justify-between md:flex-row flex-col ml-6 container md:mx-auto my-16">
+      <div className="flex justify-between max-h-[] md:flex-row flex-col ml-6 container md:mx-auto my-16">
         <div className="mb-6">
           <h5 className="font-bold text-xl">K_Bookshop</h5>
           <p className="text-xs text-[#41404055]">© 2025 K_Bookshop</p>
