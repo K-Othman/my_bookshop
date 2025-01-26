@@ -6,7 +6,7 @@ export interface Book {
   title: string;
   image: string;
   price: string;
-  published_date: Date;
+  published_date: number;
   author: string;
 }
 

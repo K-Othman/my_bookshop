@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
           <Link href={"/contactUs"} className="nav">
             Contact Us
           </Link>
-          <Link href={"/signUp"} className="nav">
+          <Link href={"/login"} className="nav">
             Sign Up
           </Link>
           <Link href={"/cart"} className="py-4 text-secondary">

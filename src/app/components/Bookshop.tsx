@@ -5,14 +5,6 @@ import { BooksContext } from "../context/booksContext";
 import Books from "./Books";
 import { Book } from "../context/booksContext";
 
-// export interface Book {
-//   id: string;
-//   title: string;
-//   image: string;
-//   url: string;
-//   price: string;
-// }
-
 const Bookshop = () => {
   const { books, isLoading } = useContext(BooksContext);
 
