@@ -1,7 +1,17 @@
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { UserAuth } from "../context/AuthContext";
 
 const Navbar: React.FC = () => {
+  const { user, logOut } = UserAuth();
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <nav className="container mx-auto bg-third">
       <div className="flex flex-col md:flex-row justify-between items-center">
@@ -18,9 +28,18 @@ const Navbar: React.FC = () => {
           <Link href={"/contactUs"} className="nav">
             Contact Us
           </Link>
-          <Link href={"/login"} className="nav">
+          {!user ? (
+            <Link href={"/login"} className="nav">
+              Sign Up
+            </Link>
+          ) : (
+            <button className="nav" onClick={handleSignOut}>
+              Sign Out
+            </button>
+          )}
+          {/* <Link href={"/login"} className="nav">
             Sign Up
-          </Link>
+          </Link> */}
           <Link href={"/cart"} className="py-4 text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"

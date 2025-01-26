@@ -14,6 +14,7 @@ import {
   User,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { error } from "console";
 
 type Props = {
   children: ReactNode;
@@ -53,6 +54,10 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
   );
 };
 
-export const UserAuth = () => {
-  return useContext(AuthContext);
+export const UserAuth = (): AuthContextType => {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error("UserAuth must be used within an AuthContextProvider");
+  }
+  return context;
 };

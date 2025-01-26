@@ -7,7 +7,6 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  //   apiKey: "AIzaSyBuV5wNPsGJPPIrhvDVmWNhp5vBXSnUNWU",
   apiKey: process.env.NEXT_PUBLIC_APIKEY,
   authDomain: "k-bookshop-48f6d.firebaseapp.com",
   projectId: "k-bookshop-48f6d",

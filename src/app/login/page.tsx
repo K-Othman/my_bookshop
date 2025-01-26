@@ -2,6 +2,24 @@
 import { UserAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
+  const { user, googleSignIn, logOut } = UserAuth();
+
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <main className="flex justify-center items-center h-screen bg-gray-100">
       <div className="p-6 bg-white rounded-lg shadow-md w-full max-w-md">
@@ -36,17 +54,22 @@ const LoginPage = () => {
             />
           </div>
           <button
-            type="submit"
+            onClick={handleSignIn}
+            // type="submit"
             className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
           >
             Login
           </button>
         </form>
+
         <p className="text-sm text-center text-gray-600 mt-4">
           Don't have an account?{" "}
-          <a href="/signup" className="text-blue-600 hover:underline">
+          <button
+            onClick={handleSignIn}
+            className="text-blue-600 hover:underline"
+          >
             Sign up
-          </a>
+          </button>
         </p>
       </div>
     </main>
