@@ -6,6 +6,7 @@ import {
 import Link from "next/link";
 import { useContext } from "react";
 import { BooksContext } from "../context/booksContext";
+import { UserAuth } from "../context/AuthContext";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -24,6 +25,7 @@ interface BooksProps {
 
 const Books: React.FC<BooksProps> = ({ books }) => {
   const { addToFavorites } = useContext(BooksContext);
+  const { user } = UserAuth();
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 text-center">
@@ -54,7 +56,36 @@ const Books: React.FC<BooksProps> = ({ books }) => {
             >
               Add To Cart
             </button>
-            <button
+
+            {/* The wishlist Button */}
+
+            {!user ? (
+              <div className="relative">
+                <p className="bg-amber-400 text-white p-1 rounded-lg absolute -top-10 right-0 w-56">
+                  You Need To Sign In First.
+                </p>
+                <button
+                  className="bg-gray-100 p-2 rounded-full shadow hover:bg-gray-200 transition-colors"
+                  // onClick={() => {
+                  //   addToFavorites(book);
+                  //   console.log("Added to Favorites:", book);
+                  // }}
+                >
+                  <BookmarkIcon className="h-5 w-5 text-secondary" />
+                </button>
+              </div>
+            ) : (
+              <button
+                className="bg-gray-100 p-2 rounded-full shadow hover:bg-gray-200 transition-colors"
+                onClick={() => {
+                  addToFavorites(book);
+                  console.log("Added to Favorites:", book);
+                }}
+              >
+                <BookmarkIcon className="h-5 w-5 text-secondary" />
+              </button>
+            )}
+            {/* <button
               className="bg-gray-100 p-2 rounded-full shadow hover:bg-gray-200 transition-colors"
               onClick={() => {
                 addToFavorites(book);
@@ -62,7 +93,7 @@ const Books: React.FC<BooksProps> = ({ books }) => {
               }}
             >
               <BookmarkIcon className="h-5 w-5 text-secondary" />
-            </button>
+            </button> */}
           </div>
         </div>
       ))}

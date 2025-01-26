@@ -2,7 +2,7 @@
 import { UserAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
-  const { user, googleSignIn, logOut } = UserAuth();
+  const { user, googleSignIn } = UserAuth();
 
   const handleSignIn = async () => {
     try {
@@ -11,14 +11,7 @@ const LoginPage = () => {
       console.log(error);
     }
   };
-
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  console.log(user);
 
   return (
     <main className="flex justify-center items-center h-screen bg-gray-100">

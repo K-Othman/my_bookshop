@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
     }
   };
   return (
-    <nav className="container mx-auto bg-third">
+    <nav className="container mx-auto bg-third relative">
       <div className="flex flex-col md:flex-row justify-between items-center">
         <Link href={"/"}>
           <h1 className="font-bold">K_Bookshop</h1>
@@ -33,9 +33,18 @@ const Navbar: React.FC = () => {
               Sign Up
             </Link>
           ) : (
-            <button className="nav" onClick={handleSignOut}>
-              Sign Out
-            </button>
+            <div>
+              <button className="nav" onClick={handleSignOut}>
+                Sign Out
+              </button>
+              <p className=" text-xs absolute -right-16 top-2">
+                Welcome,
+                <br />
+                <span className="font-bold">
+                  {user.displayName?.split(" ")[0]}
+                </span>
+              </p>
+            </div>
           )}
           {/* <Link href={"/login"} className="nav">
             Sign Up
