@@ -43,3 +43,14 @@ body {
   background-color: #006879;
   color: #ffffff;
 }
+
+.fade {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, visibility 0.8s ease; /* Transition duration: 0.8 seconds */
+}
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
