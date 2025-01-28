@@ -1,9 +1,12 @@
 import { BookmarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { UserAuth } from "../context/AuthContext";
+import { useContext } from "react";
+import { BooksContext } from "../context/booksContext";
 
 const Navbar: React.FC = () => {
   const { user, logOut } = UserAuth();
+  const { isLoading } = useContext(BooksContext);
 
   const handleSignOut = async () => {
     try {
@@ -28,16 +31,19 @@ const Navbar: React.FC = () => {
           <Link href={"/contactUs"} className="nav">
             Contact Us
           </Link>
-          {!user ? (
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : !user ? (
             <Link href={"/login"} className="nav">
               Sign Up
             </Link>
           ) : (
-            <div>
+            <div className="flex items-center gap-1">
               <button className="nav" onClick={handleSignOut}>
                 Sign Out
               </button>
-              <p className=" text-xs absolute -right-16 top-2">
+              {/* <p className=" text-xs absolute -right-16 top-2"> */}
+              <p className=" text-xs ">
                 Welcome,
                 <br />
                 <span className="font-bold">

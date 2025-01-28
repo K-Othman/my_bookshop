@@ -108,6 +108,8 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 import { BooksContext } from "../context/booksContext";
 import { UserAuth } from "../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -125,22 +127,10 @@ interface BooksProps {
 }
 
 const Books: React.FC<BooksProps> = ({ books }) => {
-  const { addToFavorites } = useContext(BooksContext);
+  const { addToFavorites, isLoading } = useContext(BooksContext);
   const { user } = UserAuth();
 
-  // State to manage which book's message is visible
-  const [visibleMessages, setVisibleMessages] = useState<{
-    [key: string]: boolean;
-  }>({});
-
-  const handleShowMessage = (bookId: string) => {
-    setVisibleMessages((prev) => ({ ...prev, [bookId]: true }));
-
-    // Hide the message after 3 seconds
-    setTimeout(() => {
-      setVisibleMessages((prev) => ({ ...prev, [bookId]: false }));
-    }, 1000);
-  };
+  const notifySignIn = () => toast.error("You need to sign in first!");
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 text-center">
@@ -173,16 +163,13 @@ const Books: React.FC<BooksProps> = ({ books }) => {
             </button>
 
             {/* Wishlist Button */}
-            {!user ? (
-              <div className="relative">
-                {visibleMessages[book.id] && (
-                  <p className="bg-amber-400 text-xs text-white p-1 rounded-lg absolute -top-10 right-0 w-[150px]">
-                    You Need To Sign In First.
-                  </p>
-                )}
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : !user ? (
+              <div className="">
                 <button
                   className="bg-gray-100 p-2 rounded-full shadow hover:bg-gray-200 transition-colors"
-                  onClick={() => handleShowMessage(book.id)}
+                  onClick={notifySignIn}
                 >
                   <BookmarkIcon className="h-5 w-5 text-secondary" />
                 </button>
@@ -201,6 +188,7 @@ const Books: React.FC<BooksProps> = ({ books }) => {
           </div>
         </div>
       ))}
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };
