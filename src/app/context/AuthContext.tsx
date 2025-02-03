@@ -78,6 +78,7 @@ import {
   GoogleAuthProvider,
   User,
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -103,6 +104,20 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
     signInWithPopup(auth, provider).catch((error) =>
       console.error("Google Sign-In Error:", error.message)
     );
+  };
+
+  // Create User With Email And Password
+  const signUpWithEmail = async (email: string, password: string) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("User registered successfully:", userCredential.user);
+    } catch (error) {
+      console.error("Sign Up Error:", error);
+    }
   };
 
   // Email And Password Sign-In

@@ -74,6 +74,7 @@
 "use client";
 import { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
+import Link from "next/link";
 
 const LoginPage = () => {
   const { user, googleSignIn, emailSignIn } = UserAuth();
@@ -156,13 +157,16 @@ const LoginPage = () => {
 
         <p className="text-sm text-center text-gray-600 mt-4">
           Don't have an account?{" "}
-          <button
-            onClick={handleGoogleSignIn}
-            className="text-blue-600 hover:underline"
-          >
-            Sign up with Google
-          </button>
+          <Link href={"/signup"} className="text-blue-600 hover:underline">
+            Sign up
+          </Link>
         </p>
+        <button
+          onClick={handleGoogleSignIn}
+          className="text-blue-600 hover:underline mx-auto text-center flex"
+        >
+          Sign up with Google
+        </button>
       </div>
     </main>
   );
