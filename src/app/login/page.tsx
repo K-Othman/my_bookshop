@@ -91,7 +91,7 @@ const LoginPage = () => {
   };
 
   const handleEmailSignIn = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent form refresh
+    event.preventDefault();
 
     if (!email || !password) {
       setError("Please enter your email and password.");
