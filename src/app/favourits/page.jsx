@@ -14,10 +14,7 @@ const page = () => {
     <main className="container">
       <div>
         {favBooks?.map((book) => (
-          <div
-            key={book.id}
-            className="text-center flex justify-around border-l"
-          >
+          <div key={book.id} className="text-center flex justify-around">
             <div>
               <img
                 className="mx-auto h-48 object-contain"
