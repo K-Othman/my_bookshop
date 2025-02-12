@@ -9,14 +9,14 @@ const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const []
+  const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState("");
 
   // ✅ Handle Sign-Up Form Submission
   const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!email || !password || !confirmPassword) {
+    if (!email || !password || !displayName || !confirmPassword) {
       setError("All fields are required.");
       return;
     }
@@ -45,6 +45,20 @@ const SignupPage = () => {
 
         <form onSubmit={handleSignUp}>
           <div className="mb-4">
+            <label
+              htmlFor="displayName"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Name
+            </label>
+            <input
+              type="text"
+              id="displayName"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+              className="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your name"
+            />
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700"
