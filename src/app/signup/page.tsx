@@ -27,9 +27,9 @@ const SignupPage = () => {
     }
 
     try {
-      await signUpWithEmail(email, password);
-      console.log("User registered successfully!");
-      router.push("/login");
+      await signUpWithEmail(email, password, displayName);
+      console.log("User registered successfully with name:");
+      router.push("/books");
     } catch (err) {
       console.error("Sign-Up Error:", err);
       setError("Failed to sign up. Try again.");
@@ -111,7 +111,7 @@ const SignupPage = () => {
 
           <button
             type="submit"
-            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            className="w-full px-4 py-2 bg-secondary hover:bg-primary hover:text-black text-white rounded-lg  transition"
           >
             Sign Up
           </button>
@@ -119,7 +119,7 @@ const SignupPage = () => {
 
         <p className="text-sm text-center text-gray-600 mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
+          <a href="/login" className="text-secondary hover:underline">
             Sign in
           </a>
         </p>

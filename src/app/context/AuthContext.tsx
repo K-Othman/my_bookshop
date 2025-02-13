@@ -15,6 +15,7 @@ import {
   User,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { useRouter } from "next/navigation";
@@ -28,7 +29,11 @@ interface AuthContextType {
   googleSignIn: () => void;
   emailSignIn: (email: string, password: string) => Promise<void>;
   logOut: () => void;
-  signUpWithEmail: (email: string, password: string) => void;
+  signUpWithEmail: (
+    email: string,
+    password: string,
+    displayName: string
+  ) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -46,13 +51,20 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
   };
 
   // Create User With Email And Password
-  const signUpWithEmail = async (email: string, password: string) => {
+  const signUpWithEmail = async (
+    email: string,
+    password: string,
+    displayName: string
+  ) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
+      const user = userCredential.user;
+      await updateProfile(user, { displayName });
+      setUser({ ...user, displayName });
       console.log("User registered successfully:", userCredential.user);
     } catch (error) {
       console.error("Sign Up Error:", error);
@@ -67,7 +79,9 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
         email,
         password
       );
-      setUser(userCredential.user);
+      // setUser(userCredential.user);
+      const user = userCredential.user;
+      setUser({ ...user, displayName: user.displayName });
       console.log("Signed in successfully:", userCredential.user);
     } catch (error) {
       console.error("Email Sign-In Error:", (error as Error).message);
@@ -85,9 +99,14 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
   // Listen to Auth State Changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (currentUser) {
+        setUser({ ...currentUser, displayName: currentUser.displayName });
+      } else {
+        setUser(null);
+      }
       router.push("/books");
     });
+
     return () => unsubscribe();
   }, []);
 

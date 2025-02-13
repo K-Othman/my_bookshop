@@ -129,7 +129,7 @@ const ContactPage = () => {
             className={`w-full px-4 py-2 text-white rounded-lg transition ${
               isSubmitting
                 ? "bg-gray-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
+                : " bg-secondary hover:bg-primary hover:text-black"
             }`}
           >
             {isSubmitting ? "Sending..." : "Send Message"}

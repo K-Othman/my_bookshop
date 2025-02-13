@@ -79,7 +79,7 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            className="w-full px-4 py-2 bg-secondary text-white rounded-lg hover:bg-primary hover:text-black transition"
           >
             Login
           </button>
@@ -87,13 +87,13 @@ const LoginPage = () => {
 
         <p className="text-sm text-center text-gray-600 mt-4">
           Don't have an account?{" "}
-          <Link href={"/signup"} className="text-blue-600 hover:underline">
+          <Link href={"/signup"} className="text-secondary hover:underline">
             Sign up
           </Link>
         </p>
         <button
           onClick={handleGoogleSignIn}
-          className="text-blue-600 hover:underline mx-auto text-center flex"
+          className="text-secondary hover:underline mx-auto text-center flex"
         >
           Sign up with Google
         </button>

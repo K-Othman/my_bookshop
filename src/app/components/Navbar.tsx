@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
             <p>Loading...</p>
           ) : !user ? (
             <Link href={"/login"} className="nav">
-              Sign Up
+              Log in
             </Link>
           ) : (
             <div className="flex items-center gap-1">
@@ -53,9 +53,6 @@ const Navbar: React.FC = () => {
               </p>
             </div>
           )}
-          {/* <Link href={"/login"} className="nav">
-            Sign Up
-          </Link> */}
           <Link href={"/cart"} className="py-4 text-secondary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
