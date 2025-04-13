@@ -2,11 +2,12 @@
 import { useContext } from "react";
 import { BooksContext } from "../context/booksContext";
 
-const page = () => {
+const Wishlist = () => {
   const { favBooks } = useContext(BooksContext);
   const deleteBook = (book) => {
     console.log(book.id);
   };
+  console.log(favBooks, " <<<<");
 
   if (!favBooks) return <p>No favorite books yet!</p>;
 
@@ -42,4 +43,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Wishlist;

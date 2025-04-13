@@ -1,4 +1,5 @@
 "use client";
+
 import { createContext, FC, ReactNode, useEffect, useState } from "react";
 
 export interface Book {
@@ -43,15 +44,28 @@ export const BooksContextProvider: FC<Props> = ({ children }) => {
         console.error("Error fetching data:", error);
         setIsLoading(false);
       });
-  }, []);
+  }, [baseUrl]);
 
-  const addToFavorites = (book: Book) => {
-    setFavBooks((prevBooks) => {
-      if (prevBooks.some((favBook) => favBook.id === book.id)) {
-        return prevBooks;
+  // const addToFavorites = (book: Book) => {
+  //   setFavBooks((prevBooks) => {
+  //     if (prevBooks.some((favBook) => favBook.id === book.id)) {
+  //       return prevBooks;
+  //     }
+  //     return [...prevBooks, book];
+  //   });
+  // };
+  const addToFavorites = async () => {
+    try {
+      const res = await fetch(`${baseUrl}/wishlist`);
+      const data = await res.json();
+
+      if (data) {
+        setFavBooks(data);
       }
-      return [...prevBooks, book];
-    });
+    } catch (error) {
+      console.error("Error fetching wishlist:", error);
+      setIsLoading(false);
+    }
   };
 
   if (isLoading) return <p>Loading ...</p>;
