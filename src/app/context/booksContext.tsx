@@ -55,8 +55,9 @@ export const BooksContextProvider: FC<Props> = ({ children }) => {
   //   });
   // };
   const addToFavorites = async () => {
+    setIsLoading(true);
     try {
-      const res = await fetch(`${baseUrl}/wishlist`);
+      const res = await fetch(`${baseUrl}/books/wishlist`);
       const data = await res.json();
 
       if (data) {

@@ -71,7 +71,10 @@ const Navbar: React.FC = () => {
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
           </Link>
-          <Link href={"/favourits"} className=" w-6 text-secondary my-auto">
+          <Link
+            href={"/books/wishlist"}
+            className=" w-6 text-secondary my-auto"
+          >
             <BookmarkIcon />
           </Link>
         </div>
